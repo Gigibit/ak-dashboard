@@ -18,15 +18,14 @@ export class DishCreateComponent implements OnInit {
     private dishService: DishService,
     private location: Location,
     private fb: FormBuilder
-    ) {
-      this.dishForm = this.fb.group({
-        name : ['',Validators.required],
-        description : ['',Validators.required],
-        price : ['', [Validators.pattern(/^\$?[0-9]?((\.[0-9]+)|([0-9]+(\.[0-9]+)?))$/), Validators.required]]
-      });
-   }
+    ) {}
 
   ngOnInit() {
+    this.dishForm = this.fb.group({
+      name : ['',Validators.required],
+      description : ['',Validators.required],
+      price : ['', [Validators.pattern(/^\$?[0-9]?((\.[0-9]+)|([0-9]+(\.[0-9]+)?))$/), Validators.required]]
+    });
   }
   goBack(){
     this.location.back()
@@ -41,7 +40,8 @@ export class DishCreateComponent implements OnInit {
       name :  this.dishForm.get('name').value,
       description: this.dishForm.get('description').value,
       price: this.dishForm.get('price').value
-    })
+    }).subscribe(result=> this.location.back())
+    
   }
 
 

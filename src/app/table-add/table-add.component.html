@@ -4,12 +4,13 @@
       Tavolo numero:
       <input matInput [(ngModel)]="data.table.number">
   </mat-form-field>
+  <br>
   <mat-form-field>
       Numero posti:
       <input type="number" matInput [(ngModel)]="data.table.seats">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button [mat-dialog-close]="data.table" cdkFocusInitial>Ok</button>
 </div>

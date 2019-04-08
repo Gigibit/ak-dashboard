@@ -1,0 +1,14 @@
+.dish{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #222;
+    position: relative;
+}
+
+.price{
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    right: 15px;
+    top: 20%;
+}

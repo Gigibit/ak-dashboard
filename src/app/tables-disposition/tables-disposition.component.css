@@ -1,0 +1,25 @@
+.tables-container{
+    height: 100vh;
+}
+
+.table{
+    background: #fff;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border: 7px solid #222;
+}
+
+.table-4{
+    width: 160px;
+    height: 160px;
+}
+
+.table-8{
+    width: 160px;
+    height: 160px;
+}
+.table-16{
+    width: 160px;
+    height: 160px;
+}

@@ -1,12 +1,13 @@
 
 
 
-<button (click)="openDialog()"> Add </button>
-<div cdkDrop style="height: 500px; width: 500px;">
-<div class="box" cdkDrag (cdkDragEnded)="onDragEnded($event)" >Drag me around!</div>
-<div class="box" cdkDrag (cdkDragEnded)="onDragEnded($event)" >Drag me around!</div>
-<div class="box" cdkDrag (cdkDragEnded)="onDragEnded($event)" >Drag me around!</div>
-<div class="box" cdkDrag (cdkDragEnded)="onDragEnded($event)" >Drag me around!</div>
-<div class="box" cdkDrag (cdkDragEnded)="onDragEnded($event)" >Drag me around!</div>
-<div class="box" cdkDrag (cdkDragEnded)="onDragEnded($event)" >Drag me around!</div>
+<button (click)="openCreateDialog()"> Add </button>
+<div cdkDrop class="tables-container">
+    <div class="table table-{{table.seats}}" cdkDrag 
+        *ngFor="let table of tables" 
+        (cdkDragEnded)="onDragEnded(table, $event)"
+        [style.transform]="table.transform">
+        <div (click)="openEditDialog(table)">Edit</div>
+        <div>{{table.number}}</div>
+    </div>
 </div>

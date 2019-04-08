@@ -1,5 +1,5 @@
 export class Dish {
-    id?: number;
+    id?: String;
     name: String;
     description: String;
     price: number;

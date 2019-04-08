@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material';
 import { TableAddComponent } from '../table-add/table-add.component';
 import { Table } from '../core/model/table';
@@ -11,22 +10,29 @@ import { TableService } from '../table.service';
   styleUrls: ['./tables-disposition.component.css']
 })
 export class TablesDispositionComponent implements OnInit {
-
+  tables: Table[]
   constructor(
     public dialog: MatDialog,
     private tableService: TableService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.tableService.getTables().subscribe(tables=> this.tables =tables)
   }
 
-  onDragEnded(event) {
+  onDragEnded(table, event) {
+    console.log(this.tables)
     let element = event.source.getRootElement();
     let boundingClientRect = element.getBoundingClientRect();
     let parentPosition = this.getPosition(element);
-    console.log('x: ' + (boundingClientRect.x - parentPosition.left), 'y: ' + (boundingClientRect.y - parentPosition.top));        
+    table.x = (boundingClientRect.x - parentPosition.left)
+    table.y = (boundingClientRect.y - parentPosition.top)
+    table.transform = element.style.transform
+    this.tableService.update(table)
+    console.log(table)
   }
   
+
   getPosition(el) {
     let x = 0;
     let y = 0;
@@ -38,7 +44,18 @@ export class TablesDispositionComponent implements OnInit {
     return { top: y, left: x };
   }
 
-  openDialog(): void {
+  openEditDialog(table){
+    const dialogRef = this.dialog.open(TableAddComponent, {
+      data: {
+        table: table}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        this.tableService.update(result)
+    });
+  }
+
+  openCreateDialog(): void {
     const dialogRef = this.dialog.open(TableAddComponent, {
       data: {
         table: {

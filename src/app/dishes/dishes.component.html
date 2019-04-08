@@ -7,18 +7,16 @@
   </div>
 
   <div class="grid-100">
-    
     <div class="recipes">
       <button routerLink="/dish-create">Add</button>
-      
-      <div class="grid-100 row controls">
         <div class="grid-30">
-          <ul class="grid-100 row">
-            <li *ngFor="let dish of dishes" routerLink="/dish-detail/{{dish.id}}">
-              <span class="badge">{{dish.id}}</span> {{dish.name}}
+          <ul class="menu">
+            <li *ngFor="let dish of dishes" class="dish" routerLink="/dish-detail/{{dish.id}}">
+              <p>{{dish.name}}</p>
+              <p>{{dish.description}}</p>
+              <p class="price">{{dish.price}}</p>
             </li>
           </ul>
         </div>
       </div>
-    </div>
   </div>

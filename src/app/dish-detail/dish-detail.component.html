@@ -1,11 +1,44 @@
-<div *ngIf="dish">
 
-  <h2>{{dish.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{dish.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="dish.name" placeholder="name"/>
-    </label>
-  </div>
-
-</div>
+<div class="grid-container">
+  
+    <div class="grid-100">
+      <h1>
+        Create Dish
+      </h1>
+    </div>
+    
+    <div class="grid-100">
+      
+      <div class="recipes">      
+        <div class="grid-100 row controls">
+          <div class="grid-30">
+            <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+              <div>
+              <label>
+                Name:
+                <input type="text" [(ngModel)]="dish.name" formControlName="name">
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">First Name is required</div>
+                </div>
+              </label>
+              </div>
+              <label>
+                Description:
+                <input type="text" [(ngModel)]="dish.description" formControlName="description">
+              </label>
+              <label>
+                Price:
+                <input type="text" [(ngModel)]="dish.price" formControlName="price">
+                <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                  <div>Price must be in number format</div>
+                </div>
+              </label>
+              <button (click)="goBack()">Cancel</button>
+              <div class="form-group">
+                <button class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

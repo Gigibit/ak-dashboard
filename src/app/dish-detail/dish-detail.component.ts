@@ -3,6 +3,7 @@ import { Dish } from '../core/model/dish';
 import { ActivatedRoute } from '@angular/router';
 import { DishService } from '../dish.service';
 import { Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dish-detail',
@@ -11,19 +12,42 @@ import { Location } from '@angular/common';
 })
 export class DishDetailComponent implements OnInit {
   @Input() dish: Dish
+  dishForm: FormGroup;
+  submitted = false;
+
+  
   constructor(
     private route: ActivatedRoute,
     private dishService: DishService,
-    private location: Location
-  ) { }
+    private location: Location,
+    private fb: FormBuilder
+    ){ }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-  this.dishService.getDish(id)
+    const id = this.route.snapshot.paramMap.get('id');
+    this.dishService.getDish(id)
     .subscribe(dish => this.dish = dish);
+    this.dishForm = this.fb.group({
+      name : ['',Validators.required],
+      description : ['',Validators.required],
+      price : ['', [Validators.pattern(/^\$?[0-9]?((\.[0-9]+)|([0-9]+(\.[0-9]+)?))$/), Validators.required]]
+    });
   }
 
-  goBack(): void {
-    this.location.back();
+  goBack(){
+    this.location.back()
   }
+  onSubmit(){
+    
+    this.submitted = true
+    
+    if (this.dishForm.invalid) return
+    
+    this.dishService.update({
+      name :  this.dishForm.get('name').value,
+      description: this.dishForm.get('description').value,
+      price: this.dishForm.get('price').value
+    })
+  }
+
 }
