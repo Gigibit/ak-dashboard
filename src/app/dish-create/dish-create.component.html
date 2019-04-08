@@ -12,24 +12,33 @@
     <div class="recipes">      
       <div class="grid-100 row controls">
         <div class="grid-30">
-          <form [formGroup]="dishForm" novalidate>
+          <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+            <div>
             <label>
               Name:
-              <input type="text" [formControl]="dishForm['name']">
+              <input type="text" formControlName="name">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">First Name is required</div>
+              </div>
             </label>
+            </div>
             <label>
               Description:
-              <input type="text" [formControl]="dishForm['description']">
+              <input type="text" formControlName="description">
             </label>
             <label>
               Price:
-              <input type="text" [formControl]="dishForm['price']">
+              <input type="text" formControlName="price">
+              <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                <div>Price must be in number format</div>
+              </div>
             </label>
+            <button (click)="goBack()">Cancel</button>
+            <div class="form-group">
+              <button class="btn btn-primary">Save</button>
+            </div>
           </form>
         </div>
-        <button (click)="goBack()">Cancel</button>
-        <button (click)="store()">Save</button>
-        
       </div>
     </div>
   </div>

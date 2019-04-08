@@ -11,6 +11,8 @@ import { Location } from '@angular/common';
 })
 export class DishCreateComponent implements OnInit {
   dishForm: FormGroup;
+  submitted = false;
+
   
   constructor(
     private dishService: DishService,
@@ -20,7 +22,7 @@ export class DishCreateComponent implements OnInit {
       this.dishForm = this.fb.group({
         name : ['',Validators.required],
         description : ['',Validators.required],
-        price : ['', [Validators.pattern('/^\d+\.\d{0,2}$/'), Validators.required]]
+        price : ['', [Validators.pattern(/^\$?[0-9]?((\.[0-9]+)|([0-9]+(\.[0-9]+)?))$/), Validators.required]]
       });
    }
 
@@ -29,18 +31,21 @@ export class DishCreateComponent implements OnInit {
   goBack(){
     this.location.back()
   }
-  store(){
-    if(this.allFieldsAreValids()){
-      this.dishService.save({
-        name :  this.dishForm.get('name').value,
-        description: this.dishForm.get('description').value,
-        price: this.dishForm.get('price').value
-      })
-    }else alert('errore nel form')
+  onSubmit(){
+    
+    this.submitted = true
+    
+    if (this.dishForm.invalid) return
+    
+    this.dishService.save({
+      name :  this.dishForm.get('name').value,
+      description: this.dishForm.get('description').value,
+      price: this.dishForm.get('price').value
+    })
   }
 
-  allFieldsAreValids(){
-    return true;
-  }
+
+  get f() { return this.dishForm.controls; }
+
 
 }

@@ -24,7 +24,6 @@ export const NOTIFICATIONS: Notification[] = [{
             description:"top!!", 
             price: 0.3 } ],
       payed : false,
-      tableNumber: 4
    },
    created_at: new Date()
 },
@@ -41,7 +40,6 @@ export const NOTIFICATIONS: Notification[] = [{
             description:"very good!", 
             price: 0.3 } ],
       payed : true,
-      tableNumber: 4
    },
    created_at: new Date()
 }]

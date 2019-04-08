@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Table information</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+      Tavolo numero:
+      <input matInput [(ngModel)]="data.table.number">
+  </mat-form-field>
+  <mat-form-field>
+      Numero posti:
+      <input type="number" matInput [(ngModel)]="data.table.seats">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.table" cdkFocusInitial>Ok</button>
+</div>

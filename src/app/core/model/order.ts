@@ -1,8 +1,9 @@
 import { Dish } from './dish';
+import { Table } from './table';
 
 export interface Order{
     at : Date,
     dishes: Dish[],
-    tableNumber: number
+    table?: Table,
     payed: boolean
 }
