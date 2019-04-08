@@ -3,6 +3,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material';
 import { TableAddComponent } from '../table-add/table-add.component';
 import { Table } from '../core/model/table';
+import { TableService } from '../table.service';
 
 @Component({
   selector: 'app-tables-disposition',
@@ -10,17 +11,13 @@ import { Table } from '../core/model/table';
   styleUrls: ['./tables-disposition.component.css']
 })
 export class TablesDispositionComponent implements OnInit {
-  droppedData: string;
-  @Output('cdkDropDropped') 
-  dropped: EventEmitter<CdkDragDrop<String, any>> = 
-    new EventEmitter<CdkDragDrop<String, any>>();
+
   constructor(
     public dialog: MatDialog,
     private tableService: TableService
   ) { }
 
   ngOnInit() {
-    this.dropped.subscribe(value=> console.log(value))
   }
 
   onDragEnded(event) {
@@ -51,7 +48,7 @@ export class TablesDispositionComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-        console.log(result)
+        this.tableService.save(result)
     });
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Table } from './core/model/table';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,16 @@ import { Table } from './core/model/table';
 export class TableService {
 
   constructor() { }
-  getTables(){
-
+  getTables():Observable<Table[]>{
+    return null
   }
 
   save(table:Table){
 
   }
 
-  update(table:Table){}
+  update(table:Table){
+
+  }
 
 }
