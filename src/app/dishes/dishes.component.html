@@ -1,0 +1,24 @@
+<div class="grid-container">
+  
+  <div class="grid-100">
+    <h1>
+      My Dishes
+    </h1>
+  </div>
+
+  <div class="grid-100">
+    
+    <div class="recipes">
+      <button routerLink="/dish-create">Add</button>
+      
+      <div class="grid-100 row controls">
+        <div class="grid-30">
+          <ul class="grid-100 row">
+            <li *ngFor="let dish of dishes" routerLink="/dish-detail/{{dish.id}}">
+              <span class="badge">{{dish.id}}</span> {{dish.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
