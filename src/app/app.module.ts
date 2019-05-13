@@ -17,6 +17,11 @@ import { DishCreateComponent } from './dish-create/dish-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TablesDispositionComponent } from './tables-disposition/tables-disposition.component';
 import { TableAddComponent } from './table-add/table-add.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AlertComponent } from './alert/alert.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 
 @NgModule({
@@ -28,7 +33,10 @@ import { TableAddComponent } from './table-add/table-add.component';
     SideNavComponent,
     DishCreateComponent,
     TablesDispositionComponent,
-    TableAddComponent
+    TableAddComponent,
+    LoginComponent,
+    RegisterComponent,
+    AlertComponent
   ],
   entryComponents: [TableAddComponent],
   imports: [
@@ -49,7 +57,9 @@ import { TableAddComponent } from './table-add/table-add.component';
     MatInputModule,
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
