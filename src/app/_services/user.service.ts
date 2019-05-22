@@ -7,6 +7,10 @@ import { SERVER_URL } from 'src/environments/environment';
 export class UserService {
     constructor(private http: HttpClient) { }
 
+    getContext(){
+        return this.http.get(`${SERVER_URL}/admins/me`)
+    }
+
     getAll() {
         return this.http.get<User[]>(`${SERVER_URL}/users`);
     }

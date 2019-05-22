@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const SERVER_URL = 'http://alex.com'
+export const SERVER_URL = 'http://172.17.205.163:8080'
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DishService } from '../dish.service';
+import { DishService } from '../_services/dish.service';
 import { Dish } from '../core/model/dish';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';

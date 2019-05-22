@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Notification } from './core/model/notification';
+import { Notification } from '../core/model/notification';
 import { Observable, of } from 'rxjs';
-import { NOTIFICATIONS } from './mock/mock-dish';
+import { NOTIFICATIONS } from '../mock/mock-dish';
 
 
 

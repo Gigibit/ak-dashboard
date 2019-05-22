@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { TableAddComponent } from '../table-add/table-add.component';
 import { Table } from '../core/model/table';
-import { TableService } from '../table.service';
+import { TableService } from '../_services/table.service';
 
 @Component({
   selector: 'app-tables-disposition',

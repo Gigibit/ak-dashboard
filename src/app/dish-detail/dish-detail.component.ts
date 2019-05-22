@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Dish } from '../core/model/dish';
 import { ActivatedRoute } from '@angular/router';
-import { DishService } from '../dish.service';
+import { DishService } from '../_services/dish.service';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

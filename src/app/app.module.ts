@@ -20,8 +20,8 @@ import { TableAddComponent } from './table-add/table-add.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './alert/alert.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
 
 
 @NgModule({
@@ -42,6 +42,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
   imports: [
     BrowserModule,
     MatSidenavModule,
+    HttpClientModule,
     FormsModule,
     AppRoutingModule,
     LayoutModule,

@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from './_services/authentication.service';
 
-@Component({
+
+@Component({   
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-})
+ })
 export class AppComponent {
-  title = 'ak-dashboard';
+  @ViewChild('drawer') drawer
+  tkn: string
+
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+        this.authenticationService.currentUser.subscribe(usr =>{
+          this.tkn = usr == null ? null : usr.token;
+        });
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    }
 }

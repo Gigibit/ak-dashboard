@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { DISHES } from './mock/mock-dish';
-import { Dish } from './core/model/dish';
+import { DISHES } from '../mock/mock-dish';
+import { Dish } from '../core/model/dish';
 
 @Injectable({
   providedIn: 'root'

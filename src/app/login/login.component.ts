@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../_services/authentication.service';
 import { AlertService } from '../alert.service';
 
 
-@Component({templateUrl: 'login.component.html'})
+@Component({ 
+  templateUrl: 'login.component.html',
+  styleUrls: ['./login.component.css']
+})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;

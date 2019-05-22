@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+  <mat-sidenav *ngIf="tkn" #drawer class="sidenav" fixedInViewport="true"
   [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
   [mode]="(isHandset$ | async) ? 'over' : 'side'"
   [opened]="!(isHandset$ | async)">
@@ -11,11 +11,12 @@
   </mat-nav-list>
   </mat-sidenav>
 
-<div class="sidenav-content">
-  <button type="button" mat-button (click)="drawer.toggle()">
-    Toggle sidenav
-  </button>
-</div>
-<router-outlet></router-outlet>
+  <div class="sidenav-content">
+
+    <button type="button" mat-icon-button (click)="drawer.toggle()">
+      <mat-icon *ngIf="tkn">home</mat-icon>
+    </button>
+  </div>
+  <router-outlet></router-outlet>
 
 </mat-sidenav-container>

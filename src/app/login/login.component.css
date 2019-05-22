@@ -1,0 +1,24 @@
+
+.login-form{
+    width : 80%;
+    height: 100vh;
+    margin: 50px auto auto;
+}
+
+.login-title{
+    text-align: center;
+}
+a{
+    margin: 0;
+    padding: 0;
+}
+
+.register-button-container{
+    margin-top: 30px;
+    text-align: center;
+}
+.login-btn{
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
